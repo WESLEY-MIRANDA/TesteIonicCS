@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
+import { AlertController, IonicModule } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -9,5 +9,19 @@ import { IonicModule } from '@ionic/angular';
   imports: [IonicModule],
 })
 export class HomePage {
-  constructor() {}
+  constructor(private alertaControlador:AlertController) {}
+
+  async mensagem(){
+    const alerta = await this.alertaControlador.create({
+      header: "Teste",
+      subHeader: "Etec",
+      message: "TesteCodeSpace",
+      buttons: ["OK"]
+    });
+    await alerta.present();
+  }
+
+  teste(){
+    this.mensagem();
+  }
 }
